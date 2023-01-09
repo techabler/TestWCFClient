@@ -15,6 +15,9 @@ namespace TestWCFClient
 {
     public partial class MainForm : Form
     {
+        Dictionary<string, List<MethodInfo>> eqpList = new Dictionary<string, List<MethodInfo>>();
+        
+
         public MainForm()
         {
             InitializeComponent();
@@ -122,6 +125,101 @@ namespace TestWCFClient
         private void MainForm_Load(object sender, EventArgs e)
         {
             //btnAlert.BackColor = Color.DarkRed;
+            if (loadMethodList())
+            {
+                List<string> eqps =  eqpList.Keys.ToList<string>();
+
+                cboEquipment.Items.Clear();
+                cboEquipment.DataSource = eqps;
+            }
+            
+        }
+
+        private bool loadMethodList()
+        {
+            bool result = false;
+            List<MethodInfo> list = new List<MethodInfo>();
+
+            eqpList.Add("Select", null);
+
+            list.Add(new MethodInfo
+            {
+                eqpId = "F01MIP01100101",
+                method_id = "MachineControl",
+                method_path = "F01MIP01100101.MachineInfo.MachineControl",
+                method_parent_path = "F01MIP01100101.MachineInfo",
+                parent_arg_info = "R:Restart, X:Test End",
+                method_output_count = 1
+            });
+
+            list.Add(new MethodInfo
+            {
+                eqpId = "F01MIP01100101",
+                method_id = "ModeChange",
+                method_path = "F01MIP01100101.MachineInfo.ModeChange",
+                method_parent_path = "F01MIP01100101.MachineInfo",
+                parent_arg_info = "0:Control, 1:Manual",
+                method_output_count = 1
+            });
+
+            eqpList.Add("F01MIP01100101", list);
+
+            list = new List<MethodInfo>();
+            list.Add(new MethodInfo
+            {
+                eqpId = "F01PRE01100101",
+                method_id = "MachineControl",
+                method_path = "F01PRE01100101.MachineInfo.MachineControl",
+                method_parent_path = "F01PRE01100101.MachineInfo",
+                parent_arg_info = "E:End Curren, P:Pause, C:Continue, R:Restart, X:Test End",
+                method_output_count = 1
+            });
+
+            list.Add(new MethodInfo
+            {
+                eqpId = "F01PRE01100101",
+                method_id = "ModeChange",
+                method_path = "F01PRE01100101.MachineInfo.ModeChange",
+                method_parent_path = "F01PRE01100101.MachineInfo",
+                parent_arg_info = "0:Control, 1:Manual",
+                method_output_count = 1
+            });
+
+            eqpList.Add("F01PRE01100101", list);
+
+
+            result = true;
+
+            return result;
+        }
+
+        private void cboEquipment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedEqpName = cboEquipment.Items[cboEquipment.SelectedIndex].ToString();
+            if (!selectedEqpName.Equals("Select"))
+            {
+                cboMethodList.Items.Clear();
+                List<MethodInfo> list = eqpList.FirstOrDefault(item => item.Key == selectedEqpName).Value;
+                foreach(var item in list)
+                {
+                    cboMethodList.Items.Add(item.method_id);
+                }
+            }
+        }
+
+        private void cboMethodList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedEqpName = cboEquipment.Items[cboEquipment.SelectedIndex].ToString();
+            string selectedMethodId = cboMethodList.Items[cboMethodList.SelectedIndex].ToString();
+
+            List<MethodInfo> list = eqpList.FirstOrDefault(item => item.Key == selectedEqpName).Value;
+            MethodInfo method = list.FirstOrDefault(x => x.method_id.Equals(selectedMethodId));
+
+            txtCallMethodPath.Text = method.method_path;
+            txtCallEqpID.Text = selectedEqpName;
+            txtCallParentPath.Text = method.method_parent_path;
+            txtCallOutputCount.Text = method.method_output_count.ToString();
+            txtInputArgInfo.Text = method.parent_arg_info;
         }
     }
 
@@ -147,6 +245,18 @@ namespace TestWCFClient
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "CallMethod", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
         object[] CallMethod(string eqp_id, string parent_path_from_eqp_id, string method_path_from_eqp_id, object[] in_args, int out_args_count);
+    }
+
+    public class MethodInfo
+    {
+        public string eqpId { get; set; }
+        public string method_id { get; set; }   
+        public string method_path { get; set; }
+        public string method_parent_path { get; set; }
+        public int method_output_count { get; set; }
+        public string parent_path_from_eqp_id { get; set; }
+        public string parent_arg_info{ get; set; }
+
     }
 
 }
