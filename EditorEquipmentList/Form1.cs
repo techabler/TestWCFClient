@@ -23,19 +23,7 @@ namespace EditorEquipmentList
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string filePath = string.Empty;
-
-            openFileDialog1.FileName = "";
-
-            openFileDialog1.Filter = "csv(*.csv)|*.csv";
-
-            if(openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                _csvFilePath = openFileDialog1.FileName;
-
-                setEqpList(_csvFilePath);
-                Console.Write(_csvFilePath);
-            }
+            
         }
 
         private bool setEqpList(string csvFilePath)
@@ -47,6 +35,9 @@ namespace EditorEquipmentList
             {
                 _table.Columns.Add(column);
             }
+
+            //_table.Columns.Add("EqpType", 10, HorizontalAlignment.Left);
+
 
             try
             {
@@ -73,31 +64,63 @@ namespace EditorEquipmentList
             
 
             dataGridView1.DataSource = _table;
+            
 
             return false;
         }
 
         private bool saveCsv()
         {
-            FileStream fs = new FileStream(_csvFilePath, FileMode.OpenOrCreate, FileAccess.Write);
-            StreamWriter sw = new StreamWriter(fs, Encoding.ASCII);
-
-            string line = string.Join(",", _table.Columns.Cast<object>());
-            sw.WriteLine(line);
-
-            foreach(DataRow item in _table.Rows)
+            try
             {
-                line = string.Join(",", item.ItemArray.Cast<object>());
-                sw.WriteLine(line);
+                FileStream fs = new FileStream(_csvFilePath, FileMode.OpenOrCreate, FileAccess.Write);
+                StreamWriter sw = new StreamWriter(fs, Encoding.ASCII);
+
+                string line = string.Empty;
+                //string line = string.Join(",", _table.Columns.Cast<object>());
+                //sw.WriteLine(line);
+
+                foreach (DataRow item in _table.Rows)
+                {
+                    line = string.Join(",", item.ItemArray.Cast<object>());
+                    sw.WriteLine(line);
+                }
+
+                sw.Close();
+                fs.Close();
             }
-
-            sw.Close();
-            fs.Close();
-
-            return false;
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception : [{ex.Message}]");
+                return false;
+            }
+            
+            return true;
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void eqpOpenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string filePath = string.Empty;
+
+            openFileDialog1.FileName = "";
+
+            openFileDialog1.Filter = "csv(*.csv)|*.csv";
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                _csvFilePath = openFileDialog1.FileName;
+
+                setEqpList(_csvFilePath);
+                Console.Write(_csvFilePath);
+            }
+        }
+
+        private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (saveCsv())
             {

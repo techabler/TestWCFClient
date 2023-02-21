@@ -56,12 +56,20 @@
             this.label5 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.txtRecipePath = new System.Windows.Forms.TextBox();
+            this.btnSelectRecipe = new System.Windows.Forms.Button();
+            this.lstWriteTag = new System.Windows.Forms.ListBox();
+            this.cboWriteEqpList = new System.Windows.Forms.ComboBox();
+            this.cboEventList = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.btnLoadRecipe = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtInputArgInfo = new System.Windows.Forms.TextBox();
             this.btnSelect = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.cboMethodList = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.cboEquipment = new System.Windows.Forms.ComboBox();
-            this.txtInputArgInfo = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -335,6 +343,14 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.panel4.Controls.Add(this.txtRecipePath);
+            this.panel4.Controls.Add(this.btnSelectRecipe);
+            this.panel4.Controls.Add(this.lstWriteTag);
+            this.panel4.Controls.Add(this.cboWriteEqpList);
+            this.panel4.Controls.Add(this.cboEventList);
+            this.panel4.Controls.Add(this.label15);
+            this.panel4.Controls.Add(this.btnLoadRecipe);
+            this.panel4.Controls.Add(this.label14);
             this.panel4.Controls.Add(this.txtInputArgInfo);
             this.panel4.Controls.Add(this.btnSelect);
             this.panel4.Controls.Add(this.label13);
@@ -347,9 +363,95 @@
             this.panel4.Size = new System.Drawing.Size(405, 614);
             this.panel4.TabIndex = 4;
             // 
+            // txtRecipePath
+            // 
+            this.txtRecipePath.Location = new System.Drawing.Point(209, 22);
+            this.txtRecipePath.Name = "txtRecipePath";
+            this.txtRecipePath.ReadOnly = true;
+            this.txtRecipePath.Size = new System.Drawing.Size(184, 21);
+            this.txtRecipePath.TabIndex = 32;
+            // 
+            // btnSelectRecipe
+            // 
+            this.btnSelectRecipe.Location = new System.Drawing.Point(237, 65);
+            this.btnSelectRecipe.Name = "btnSelectRecipe";
+            this.btnSelectRecipe.Size = new System.Drawing.Size(75, 23);
+            this.btnSelectRecipe.TabIndex = 31;
+            this.btnSelectRecipe.Text = "Select...";
+            this.btnSelectRecipe.UseVisualStyleBackColor = true;
+            this.btnSelectRecipe.Click += new System.EventHandler(this.btnSelectRecipe_Click);
+            this.btnSelectRecipe.MouseClick += new System.Windows.Forms.MouseEventHandler(this.common_mclick);
+            // 
+            // lstWriteTag
+            // 
+            this.lstWriteTag.FormattingEnabled = true;
+            this.lstWriteTag.HorizontalScrollbar = true;
+            this.lstWriteTag.ItemHeight = 12;
+            this.lstWriteTag.Location = new System.Drawing.Point(26, 100);
+            this.lstWriteTag.Name = "lstWriteTag";
+            this.lstWriteTag.ScrollAlwaysVisible = true;
+            this.lstWriteTag.Size = new System.Drawing.Size(367, 208);
+            this.lstWriteTag.TabIndex = 30;
+            // 
+            // cboWriteEqpList
+            // 
+            this.cboWriteEqpList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboWriteEqpList.FormattingEnabled = true;
+            this.cboWriteEqpList.Location = new System.Drawing.Point(78, 22);
+            this.cboWriteEqpList.Name = "cboWriteEqpList";
+            this.cboWriteEqpList.Size = new System.Drawing.Size(121, 20);
+            this.cboWriteEqpList.TabIndex = 29;
+            // 
+            // cboEventList
+            // 
+            this.cboEventList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboEventList.FormattingEnabled = true;
+            this.cboEventList.Location = new System.Drawing.Point(78, 65);
+            this.cboEventList.Name = "cboEventList";
+            this.cboEventList.Size = new System.Drawing.Size(121, 20);
+            this.cboEventList.TabIndex = 27;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label15.Location = new System.Drawing.Point(23, 61);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(40, 17);
+            this.label15.TabIndex = 26;
+            this.label15.Text = "Event";
+            // 
+            // btnLoadRecipe
+            // 
+            this.btnLoadRecipe.Location = new System.Drawing.Point(318, 65);
+            this.btnLoadRecipe.Name = "btnLoadRecipe";
+            this.btnLoadRecipe.Size = new System.Drawing.Size(75, 23);
+            this.btnLoadRecipe.TabIndex = 25;
+            this.btnLoadRecipe.Text = "Load";
+            this.btnLoadRecipe.UseVisualStyleBackColor = true;
+            this.btnLoadRecipe.Click += new System.EventHandler(this.btnLoadRecipe_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label14.Location = new System.Drawing.Point(23, 22);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(49, 17);
+            this.label14.TabIndex = 24;
+            this.label14.Text = "Eqp ID";
+            // 
+            // txtInputArgInfo
+            // 
+            this.txtInputArgInfo.Location = new System.Drawing.Point(26, 416);
+            this.txtInputArgInfo.Multiline = true;
+            this.txtInputArgInfo.Name = "txtInputArgInfo";
+            this.txtInputArgInfo.Size = new System.Drawing.Size(367, 121);
+            this.txtInputArgInfo.TabIndex = 22;
+            // 
             // btnSelect
             // 
-            this.btnSelect.Location = new System.Drawing.Point(292, 59);
+            this.btnSelect.Location = new System.Drawing.Point(318, 380);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(75, 23);
             this.btnSelect.TabIndex = 21;
@@ -360,7 +462,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label13.Location = new System.Drawing.Point(25, 65);
+            this.label13.Location = new System.Drawing.Point(23, 384);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(55, 17);
             this.label13.TabIndex = 20;
@@ -370,7 +472,7 @@
             // 
             this.cboMethodList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMethodList.FormattingEnabled = true;
-            this.cboMethodList.Location = new System.Drawing.Point(80, 61);
+            this.cboMethodList.Location = new System.Drawing.Point(78, 380);
             this.cboMethodList.Name = "cboMethodList";
             this.cboMethodList.Size = new System.Drawing.Size(206, 20);
             this.cboMethodList.TabIndex = 19;
@@ -380,7 +482,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label12.Location = new System.Drawing.Point(25, 22);
+            this.label12.Location = new System.Drawing.Point(23, 341);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(49, 17);
             this.label12.TabIndex = 18;
@@ -390,19 +492,11 @@
             // 
             this.cboEquipment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEquipment.FormattingEnabled = true;
-            this.cboEquipment.Location = new System.Drawing.Point(80, 19);
+            this.cboEquipment.Location = new System.Drawing.Point(78, 338);
             this.cboEquipment.Name = "cboEquipment";
             this.cboEquipment.Size = new System.Drawing.Size(121, 20);
             this.cboEquipment.TabIndex = 0;
             this.cboEquipment.SelectedIndexChanged += new System.EventHandler(this.cboEquipment_SelectedIndexChanged);
-            // 
-            // txtInputArgInfo
-            // 
-            this.txtInputArgInfo.Location = new System.Drawing.Point(28, 97);
-            this.txtInputArgInfo.Multiline = true;
-            this.txtInputArgInfo.Name = "txtInputArgInfo";
-            this.txtInputArgInfo.Size = new System.Drawing.Size(339, 121);
-            this.txtInputArgInfo.TabIndex = 22;
             // 
             // MainForm
             // 
@@ -461,6 +555,14 @@
         private System.Windows.Forms.ComboBox cboEquipment;
         private System.Windows.Forms.Button btnSelect;
         private System.Windows.Forms.TextBox txtInputArgInfo;
+        private System.Windows.Forms.ComboBox cboEventList;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button btnLoadRecipe;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox cboWriteEqpList;
+        private System.Windows.Forms.ListBox lstWriteTag;
+        private System.Windows.Forms.Button btnSelectRecipe;
+        private System.Windows.Forms.TextBox txtRecipePath;
     }
 }
 

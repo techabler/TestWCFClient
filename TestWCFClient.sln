@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWCFClient", "TestWCFCli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditorEquipmentList", "EditorEquipmentList\EditorEquipmentList.csproj", "{1148307C-2D71-46EB-9BD2-43F110C1D9C4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMSUtill", "FMSUtill\FMSUtill.csproj", "{FD9A0208-A628-4326-B59E-0E9C6BE69F1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1148307C-2D71-46EB-9BD2-43F110C1D9C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1148307C-2D71-46EB-9BD2-43F110C1D9C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1148307C-2D71-46EB-9BD2-43F110C1D9C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD9A0208-A628-4326-B59E-0E9C6BE69F1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD9A0208-A628-4326-B59E-0E9C6BE69F1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD9A0208-A628-4326-B59E-0E9C6BE69F1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD9A0208-A628-4326-B59E-0E9C6BE69F1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
