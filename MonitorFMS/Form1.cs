@@ -164,7 +164,7 @@ namespace MonitorFMS
             request.AddHeader("APIKey", _APIKey);
 
             RestResponse res_tray = await client.ExecuteAsync(request);
-            if(res_tray.ResponseStatus == ResponseStatus.Completed)
+            if(res_tray.ResponseStatus == ResponseStatus.Completed )
             {
                 viewTray(res_tray.Content);
             }
@@ -198,21 +198,24 @@ namespace MonitorFMS
 
             dgTray.Rows.Clear();
 
-            dgTray.Rows.Add("tray_id", json.data.tray_id);
-            dgTray.Rows.Add("model_id", json.data.model_id);
-            dgTray.Rows.Add("route_id", json.data.route_id);
-            dgTray.Rows.Add("lot_id", json.data.lot_id);
-            dgTray.Rows.Add("work_order_id", json.data.work_order_id);
-            dgTray.Rows.Add("full_flag", json.data.full_flag);
-            dgTray.Rows.Add("eqp_type", json.data.eqp_type);
-            dgTray.Rows.Add("oper_type", json.data.oper_type);
-            dgTray.Rows.Add("oper_no", json.data.oper_no);
-            dgTray.Rows.Add("next_eqp_type", json.data.next_eqp_type);
-            dgTray.Rows.Add("next_oper_type", json.data.next_oper_type);
-            dgTray.Rows.Add("job_start_time", json.data.job_start_time);
-            dgTray.Rows.Add("job_end_time", json.data.job_end_time);
-            dgTray.Rows.Add("oper_in_cells_csv", json.data.oper_in_cells_csv);
-            dgTray.Rows.Add("current_cells_csv", json.data.current_cells_csv);
+            if(json.count > 0)
+            {
+                dgTray.Rows.Add("tray_id", json.data.tray_id);
+                dgTray.Rows.Add("model_id", json.data.model_id);
+                dgTray.Rows.Add("route_id", json.data.route_id);
+                dgTray.Rows.Add("lot_id", json.data.lot_id);
+                dgTray.Rows.Add("work_order_id", json.data.work_order_id);
+                dgTray.Rows.Add("full_flag", json.data.full_flag);
+                dgTray.Rows.Add("eqp_type", json.data.eqp_type);
+                dgTray.Rows.Add("oper_type", json.data.oper_type);
+                dgTray.Rows.Add("oper_no", json.data.oper_no);
+                dgTray.Rows.Add("next_eqp_type", json.data.next_eqp_type);
+                dgTray.Rows.Add("next_oper_type", json.data.next_oper_type);
+                dgTray.Rows.Add("job_start_time", json.data.job_start_time);
+                dgTray.Rows.Add("job_end_time", json.data.job_end_time);
+                dgTray.Rows.Add("oper_in_cells_csv", json.data.oper_in_cells_csv);
+                dgTray.Rows.Add("current_cells_csv", json.data.current_cells_csv);
+            }
 
             return true;
         }

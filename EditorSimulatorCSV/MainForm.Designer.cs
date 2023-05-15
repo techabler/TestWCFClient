@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.lbCsvType = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnLoad = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -39,7 +40,6 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.simulatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.equipmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lbCsvType = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             this.plnGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrList)).BeginInit();
@@ -59,6 +59,15 @@
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(802, 53);
             this.pnlMenu.TabIndex = 0;
+            // 
+            // lbCsvType
+            // 
+            this.lbCsvType.AutoSize = true;
+            this.lbCsvType.Location = new System.Drawing.Point(12, 16);
+            this.lbCsvType.Name = "lbCsvType";
+            this.lbCsvType.Size = new System.Drawing.Size(87, 12);
+            this.lbCsvType.TabIndex = 4;
+            this.lbCsvType.Text = "Simulator CSV";
             // 
             // btnSave
             // 
@@ -108,6 +117,7 @@
             // 
             // dgrList
             // 
+            this.dgrList.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dgrList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgrList.Location = new System.Drawing.Point(0, 0);
@@ -115,6 +125,7 @@
             this.dgrList.RowTemplate.Height = 23;
             this.dgrList.Size = new System.Drawing.Size(802, 578);
             this.dgrList.TabIndex = 0;
+            this.dgrList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgrList_KeyDown);
             // 
             // openFileDialog
             // 
@@ -145,15 +156,6 @@
             this.equipmentToolStripMenuItem.Text = "Equipment";
             this.equipmentToolStripMenuItem.Click += new System.EventHandler(this.equipmentToolStripMenuItem_Click);
             // 
-            // lbCsvType
-            // 
-            this.lbCsvType.AutoSize = true;
-            this.lbCsvType.Location = new System.Drawing.Point(12, 16);
-            this.lbCsvType.Name = "lbCsvType";
-            this.lbCsvType.Size = new System.Drawing.Size(87, 12);
-            this.lbCsvType.TabIndex = 4;
-            this.lbCsvType.Text = "Simulator CSV";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -165,6 +167,7 @@
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
             this.Text = "Editor Simulator CSV";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();
             this.plnGrid.ResumeLayout(false);

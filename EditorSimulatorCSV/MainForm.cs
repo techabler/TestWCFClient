@@ -23,6 +23,7 @@ namespace EditorSimulatorCSV
             InitializeComponent();
         }
 
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
             openFileDialog.InitialDirectory = @"D:\02.Project\02.FMS\03.Dev\Ford\AtemFMS_20230215_Collabo\AtemFMS_FORD_PILOT\AtemOPCUAServer\bin\Debug\Settings\";
@@ -41,6 +42,8 @@ namespace EditorSimulatorCSV
 
                 Console.WriteLine(csvFileName);
             }
+
+            dgrList.EditMode = DataGridViewEditMode.EditOnEnter;
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
@@ -49,6 +52,9 @@ namespace EditorSimulatorCSV
             LoadCsvToGrid();
         }
 
+        /// <summary>
+        /// 선택한 CSV 파일을 로드하여 DatagridView에 저장 
+        /// </summary>
         private void LoadCsvToGrid()
         {
             DataTable dt = new DataTable();
@@ -95,12 +101,16 @@ namespace EditorSimulatorCSV
 
         }
 
+
+        /// <summary>
+        /// DataGridView 내용을 CSV 파일에 저장
+        /// </summary>
         private void SaveGridToCsv()
         {
             string delimitr = ",";
             bool isExistHeader = true;
             FileStream fs = new FileStream(_simulatorCsvFilePath, FileMode.Create, FileAccess.Write);
-            StreamWriter csvExport = new StreamWriter(fs, System.Text.Encoding.UTF8);
+            StreamWriter csvExport = new StreamWriter(fs, Encoding.ASCII);
 
 
             if (isExistHeader)
@@ -155,6 +165,81 @@ namespace EditorSimulatorCSV
             lbCsvType.Text = currCsvType.GetDescription();
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            dgrList.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+        }
+
+        private void PasteClipboard()
+        {
+            try
+            {
+                string s = Clipboard.GetText();
+                string[] lines = s.Split('\n');
+                int iFail = 0;
+                int iRow = dgrList.CurrentCell.RowIndex;
+                int iCol = dgrList.CurrentCell.ColumnIndex;
+
+                DataGridViewCell oCell;
+
+                foreach (string line in lines)
+                {
+                    if (iRow < dgrList.RowCount && line.Length > 0)
+                    {
+                        string[] sCells = line.Split(',');
+                        for (int i = 0; i < sCells.GetLength(0); ++i)
+                        {
+                            if (iCol + i < this.dgrList.ColumnCount)
+                            {
+                                oCell = dgrList[iCol + i, iRow];
+                                if (!oCell.ReadOnly)
+                                {
+                                    if (oCell.Value.ToString() != sCells[i])
+                                    {
+                                        oCell.Value = Convert.ChangeType(sCells[i], oCell.ValueType);
+                                        oCell.Style.BackColor = Color.Tomato;
+                                    }
+                                    else
+                                    {
+                                        iFail++;
+                                    }
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            }
+                        }
+                        iRow++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    if (iFail > 0)
+                    {
+                        MessageBox.Show(string.Format("{0} updates failed due to read only column setting", iFail));
+                    }
+
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("The data you pasted is in the wrong format for the cell");
+                return;
+            }
+
+            
+
+        }
+
+        private void dgrList_KeyDown(object sender, KeyEventArgs e)
+        {
+            if((e.Control && e.KeyCode == Keys.Insert) || (e.Shift && e.KeyCode == Keys.Insert))
+            {
+                PasteClipboard();
+            }
+        }
     }
 
     //Enum 확장 method
