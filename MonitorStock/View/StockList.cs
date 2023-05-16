@@ -39,6 +39,22 @@ namespace MonitorStock
             LoadData();
         }
 
+        private void initBookmarkType()
+        {
+            if(CGlobalVars.bookmarkType.Count > 0)
+            {
+                foreach(var item in CGlobalVars.bookmarkType)
+                {
+                    _cbBokmark.Add(new { Display = item.description, Value = item.code });
+                }
+
+                cbBookMark.Items.Clear();
+                cbBookMark.DataSource = _cbBokmark;
+                cbBookMark.DisplayMember = "Display";
+                cbBookMark.ValueMember = "Value";
+            }
+        }
+
         private void initCombo() 
         {
             cbMarket.Items.Clear();
@@ -46,17 +62,9 @@ namespace MonitorStock
             cbMarket.Items.Add(EMMarket.KOSPI.ToString());
             cbMarket.Items.Add(EMMarket.KOSDAQ.ToString());
             cbMarket.SelectedIndex = 0;
-
-
-            _cbBokmark.Add(new {Display= "외인 코스피 매수", Value="FP" });
-            _cbBokmark.Add(new { Display = "외인 코스닥 매수", Value = "FQ" });
-            _cbBokmark.Add(new { Display = "급상승 코스피", Value = "PU" });
-            _cbBokmark.Add(new { Display = "급상승 코스닥", Value = "QU" });
-
-            cbBookMark.Items.Clear();
-            cbBookMark.DataSource = _cbBokmark;
-            cbBookMark.DisplayMember = "Display";
-            cbBookMark.ValueMember = "Value";
+            
+            initBookmarkType();
+            
         }
 
         private void LoadData()
@@ -174,6 +182,22 @@ namespace MonitorStock
         private void dgsStockList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             selectStock = e.RowIndex;
+        }
+
+        private void txtStockName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                btnSearch_Click(null, null);
+            }
+        }
+
+        private void txtStockCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSearch_Click(null, null);
+            }
         }
     }
 }

@@ -10,6 +10,13 @@ namespace MonitorStock.Model
     {
     }
 
+    public class CBookmarkType
+    {
+        public int idx { get; set; }
+        public string code { get; set; }
+        public string description { get; set; }
+    }
+
     public class CBookmark
     {
         public string name { get; set; }

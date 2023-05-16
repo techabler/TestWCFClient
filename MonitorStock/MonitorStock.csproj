@@ -98,6 +98,7 @@
     <Compile Include="Model\TB_STOCK_ROW.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\CGlobalVars.cs" />
     <Compile Include="Service\DBController.cs" />
     <Compile Include="Tool\AtemFMSMessageBox.cs">
       <SubType>Form</SubType>

@@ -133,6 +133,11 @@ namespace MonitorStock.Service
             }
         }
 
+        public DataTable getTableRow(MySqlConnection conn, RESTCallQueryParam param)
+        {
+            return _sql_select(conn, param);
+        }
+
         /// <summary>
         /// TODO : Stock 정보 가져오기로 변경 by Stock Code
         /// </summary>

@@ -131,6 +131,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "Monitor Stock";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.pnlMain.ResumeLayout(false);
             this.pnlMain.PerformLayout();
             this.menuStrip1.ResumeLayout(false);

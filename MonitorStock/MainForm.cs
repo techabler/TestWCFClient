@@ -23,6 +23,7 @@ namespace MonitorStock
             InitializeComponent();
         }
 
+
         private void stockListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UCStockList uCStockList = new UCStockList();
@@ -46,6 +47,11 @@ namespace MonitorStock
 
             //    //Console.WriteLine(stock.name);
             //}
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            CGlobalVars.init();
         }
     }
 }

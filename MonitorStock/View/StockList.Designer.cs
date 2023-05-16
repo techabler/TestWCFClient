@@ -127,6 +127,7 @@
             this.txtStockCode.Name = "txtStockCode";
             this.txtStockCode.Size = new System.Drawing.Size(88, 21);
             this.txtStockCode.TabIndex = 4;
+            this.txtStockCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStockCode_KeyDown);
             // 
             // label2
             // 
@@ -153,6 +154,7 @@
             this.txtStockName.Name = "txtStockName";
             this.txtStockName.Size = new System.Drawing.Size(140, 21);
             this.txtStockName.TabIndex = 1;
+            this.txtStockName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStockName_KeyDown);
             // 
             // label1
             // 

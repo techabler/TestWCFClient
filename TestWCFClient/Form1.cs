@@ -152,27 +152,50 @@ namespace TestWCFClient
 
             eqpList.Add("Select", null);
 
+            //list.Add(new MethodInfo
+            //{
+            //    eqpId = "F01MIP01100101",
+            //    method_id = "MachineControl",
+            //    method_path = "F01MIP01100101.MachineInfo.MachineControl",
+            //    method_parent_path = "F01MIP01100101.MachineInfo",
+            //    parent_arg_info = "R:Restart, X:Test End",
+            //    method_output_count = 1
+            //});
+
+            //list.Add(new MethodInfo
+            //{
+            //    eqpId = "F01MIP01100101",
+            //    method_id = "ModeChange",
+            //    method_path = "F01MIP01100101.MachineInfo.ModeChange",
+            //    method_parent_path = "F01MIP01100101.MachineInfo",
+            //    parent_arg_info = "0:Control, 1:Manual",
+            //    method_output_count = 1
+            //});
+
+            //eqpList.Add("F01MIP01100101", list);
+
             list.Add(new MethodInfo
             {
-                eqpId = "F01MIP01100101",
+                eqpId = "F01FOR01100101",
                 method_id = "MachineControl",
-                method_path = "F01MIP01100101.MachineInfo.MachineControl",
-                method_parent_path = "F01MIP01100101.MachineInfo",
-                parent_arg_info = "R:Restart, X:Test End",
+                method_path = "F01FOR01100101.MachineInfo.MachineControl",
+                method_parent_path = "F01FOR01100101.MachineInfo",
+                parent_arg_info = "P:Pause, C:Continue, E:End Current, S:Restart Current Process, R:Restart, X:Test End",
                 method_output_count = 1
             });
 
             list.Add(new MethodInfo
             {
-                eqpId = "F01MIP01100101",
+                eqpId = "F01FOR01100101",
                 method_id = "ModeChange",
-                method_path = "F01MIP01100101.MachineInfo.ModeChange",
-                method_parent_path = "F01MIP01100101.MachineInfo",
+                method_path = "F01FOR01100101.MachineInfo.ModeChange",
+                method_parent_path = "F01FOR01100101.MachineInfo",
                 parent_arg_info = "0:Control, 1:Manual",
                 method_output_count = 1
             });
 
-            eqpList.Add("F01MIP01100101", list);
+            eqpList.Add("F01FOR01100101", list);
+
 
             list = new List<MethodInfo>();
             list.Add(new MethodInfo

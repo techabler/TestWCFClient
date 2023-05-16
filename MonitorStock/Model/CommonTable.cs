@@ -15,7 +15,8 @@ namespace MonitorStock
         stock_price_kospi,
         bookmark_stock,
         bookmark_increase_top20,
-        bookmark_foreigner_buy
+        bookmark_foreigner_buy,
+        bookmark_type
     }
 
     public enum BOOKMARKType
