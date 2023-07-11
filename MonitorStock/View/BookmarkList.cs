@@ -33,6 +33,7 @@ namespace MonitorStock
 
             initCombo();
             LoadData();
+            initDatePicker();
         }
 
         private void initBookmarkType()
@@ -51,6 +52,16 @@ namespace MonitorStock
                 cbBookmark.DisplayMember = "Display";
                 cbBookmark.ValueMember = "Value";
             }
+        }
+
+        /// <summary>
+        /// 등록일 선택 Combo init
+        /// </summary>
+        private void initDatePicker()
+        {
+            DateTime dateTime = DateTime.Now;
+
+            dtPicker.Value = dateTime.AddDays(-1);
         }
 
         private void initCombo()
@@ -77,6 +88,8 @@ namespace MonitorStock
                 DBController controller = new DBController();
                 DataTable dt = controller.get_bookmarkTable(conn);
 
+                dt.Columns.Add("선택", System.Type.GetType("System.Boolean"));
+
                 displayList = fullList = BaseTable.ConvertDataTable<CBookmarkInfo>(dt);
 
                 dgvBookmarkList.DataSource = dt;
@@ -89,10 +102,12 @@ namespace MonitorStock
         {
             List<CBookmarkInfo> tmpStockList = new List<CBookmarkInfo>();
             var selMarket = cbMarket.Items[cbMarket.SelectedIndex].ToString();
-            var selType = cbBookmark.Items[cbBookmark.SelectedIndex].ToString();
+            var selType = cbBookmark.SelectedValue.ToString();
 
             if (displayList.Count > 0)
             {
+                var selDateTime = dtPicker.Value.ToShortDateString();
+
                 foreach (var bookmark in displayList)
                 {
                     var condition = false;
@@ -121,7 +136,7 @@ namespace MonitorStock
                         }
                     }
 
-                    if (condition)
+                    if (condition && bookmark.DATE.ToString().Contains(selDateTime))
                     {
                         tmpStockList.Add(bookmark);
                     }

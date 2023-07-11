@@ -25,7 +25,7 @@ namespace MonitorStock.Model
 
     public class CBookmarkInfo
     {
-        public string date { get; set; }
+        public string DATE { get; set; }
         public string scode { get; set; }
         public string sname { get; set; }
 
