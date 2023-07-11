@@ -23,6 +23,18 @@ namespace MonitorStock.Model
         public string code { get; set; }
     }
 
+    public class CBookmarkInfo
+    {
+        public string date { get; set; }
+        public string scode { get; set; }
+        public string sname { get; set; }
+
+        public string market { get; set; }
+        public string type { get; set; }
+        public string description { get; set; }
+
+    }
+
     public class CStockInfo
     {
         public int idx { get; set; }

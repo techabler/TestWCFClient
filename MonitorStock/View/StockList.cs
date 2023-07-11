@@ -19,7 +19,7 @@ namespace MonitorStock
     {
         public List<CStockInfo> fullList = new List<CStockInfo>();
         public List<CStockInfo> displayList = new List<CStockInfo>();
-        private int selectStock = -1;
+        private int selectStockIdx = -1;
         private BindingList<object> _cbBokmark = new BindingList<object>();
         private string _connectionString = string.Empty;
 
@@ -153,13 +153,17 @@ namespace MonitorStock
 
         private void btnBookMark_Click(object sender, EventArgs e)
         {
-            if (displayList.Count > 0 && selectStock > -1)
+            if (displayList.Count > 0 && selectStockIdx > -1)
             {
                 string selectedBookmarkCode = cbBookMark.SelectedValue as String;
 
-                CStockInfo stock = displayList[selectStock];
+                DataGridViewRow row = dgsStockList.Rows[selectStockIdx];
+                string stockCode = row.Cells[1].Value.ToString();
+                string stockMarket = row.Cells[4].Value.ToString();
+
                 DateTime now = DateTime.Now;
-                CModelBookmark bookmark = new CModelBookmark() { code = stock.code, market = stock.market, type = selectedBookmarkCode, date = now.ToString("yyyy-MM-dd") };
+                //CModelBookmark bookmark = new CModelBookmark() { code = stock.code, market = stock.market, type = selectedBookmarkCode, date = now.ToString("yyyy-MM-dd") };
+                CModelBookmark bookmark = new CModelBookmark() { code = stockCode, market = stockMarket, type = selectedBookmarkCode, date = now.ToString("yyyy-MM-dd") };
 
                 Console.WriteLine(bookmark.ToString());
                 string SQL = $"INSERT INTO bookmark_list(date, scode, market, type) VALUES('{bookmark.date}', '{bookmark.code}', '{bookmark.market}', '{bookmark.type}')";
@@ -181,7 +185,15 @@ namespace MonitorStock
 
         private void dgsStockList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            selectStock = e.RowIndex;
+            selectStockIdx = e.RowIndex;
+
+            var ss = dgsStockList.Rows[e.RowIndex] is CStockInfo;
+
+
+
+           //CStockInfo sStock = dgsStockList.Rows[e.RowIndex] as CStockInfo;
+
+            //CStockInfo selectedStock = displayList[e.RowIndex];
         }
 
         private void txtStockName_KeyDown(object sender, KeyEventArgs e)

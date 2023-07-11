@@ -119,6 +119,12 @@
     <Compile Include="Tool\UCForm.Designer.cs">
       <DependentUpon>UCForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\BookmarkList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\BookmarkList.Designer.cs">
+      <DependentUpon>BookmarkList.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\StockList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -145,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\UCForm.resx">
       <DependentUpon>UCForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\BookmarkList.resx">
+      <DependentUpon>BookmarkList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\StockList.resx">
       <DependentUpon>StockList.cs</DependentUpon>
