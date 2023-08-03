@@ -187,7 +187,7 @@ namespace MonitorStock
         {
             selectStockIdx = e.RowIndex;
 
-            var ss = dgsStockList.Rows[e.RowIndex] is CStockInfo;
+            //var ss = dgsStockList.Rows[e.RowIndex] is CStockInfo;
 
 
 
