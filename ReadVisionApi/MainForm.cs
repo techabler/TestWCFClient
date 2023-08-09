@@ -107,13 +107,21 @@ namespace ReadVisionApi
             return true;
         }
 
+        /// <summary>
+        /// Pay Price 등록 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RIGHT_MENU_PRICE(object sender, EventArgs e)
         {
             if (selectedImageIndexNo > -1 && recipeList.Count > 0)
             {
                 var recipe = recipeList[selectedImageIndexNo];
 
-                recipe.price = resultTextBox.SelectedText;
+                var tmpPrice = resultTextBox.SelectedText;
+                
+                //예외처리 
+                recipe.price = tmpPrice.Trim().Replace('.', ',');
 
                 //dgvResult.Rows[selectedImageIndexNo].Cells[3].Value = recipe.price;
 
@@ -123,6 +131,11 @@ namespace ReadVisionApi
             }
         }
 
+        /// <summary>
+        /// Pay Date 등록
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RIGHT_MENU_DATE(object sender, EventArgs e)
         {
             if (selectedImageIndexNo > -1 && recipeList.Count > 0)
@@ -299,6 +312,7 @@ namespace ReadVisionApi
                     filePathList.Clear();
                     recipeList.Clear();
                     selectedImageIndexNo = -1;
+                    dgvResult.Rows.Clear();
                 }
 
                 pnlFlowList.Controls.Clear();
@@ -426,7 +440,14 @@ namespace ReadVisionApi
 
         }
 
-        
+
+        // Excel Export
+        private void btnExportExcel_Click(object sender, EventArgs e)
+        {
+            ExportExcel excel = new ExportExcel(dgvResult);
+            MSG result = excel.Export();
+            MessageBox.Show(result.MSG_MESSAGE);
+        }
     }
 
     public class imageItem
