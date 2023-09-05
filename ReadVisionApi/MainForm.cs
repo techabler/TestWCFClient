@@ -30,6 +30,7 @@ namespace ReadVisionApi
         private List<string> filePathList = null;
         private List<Recipe> recipeList = null;
         private int selectedImageIndexNo = -1;
+        private bool bCanBackgroundWorker = true;
 
         #endregion
 
@@ -177,6 +178,8 @@ namespace ReadVisionApi
             this.imageButton.Text = "image";
 
             this.imageButton.Enabled = true;
+
+            this.bCanBackgroundWorker = true;
         }
 
         /// <summary>
@@ -407,7 +410,7 @@ namespace ReadVisionApi
             pBox.BackColor = Color.DimGray;
             pBox.Dock = DockStyle.Fill;
             pBox.SizeMode = PictureBoxSizeMode.Zoom;
-            pBox.Image = img.GetThumbnailImage(180,180, null, IntPtr.Zero);
+            pBox.Image = img.GetThumbnailImage(178,178, null, IntPtr.Zero);
             pBox.Click += PBox_Click;
             pBox.Tag = new imageItem { idx=index, fileName=filepath };
             nPanel.Controls.Add(pBox);
@@ -419,6 +422,11 @@ namespace ReadVisionApi
         {
             if(sender is PictureBox)
             {
+                if (!this.bCanBackgroundWorker)
+                {
+                    MessageBox.Show("OCR 진행 중입니다. 잠시 후 다시 시도해 주세요!");return;
+                }
+
                 PictureBox imageBox = (PictureBox)sender;
 
                 if(imageBox.Tag.ToString().Length > 0)
@@ -433,6 +441,8 @@ namespace ReadVisionApi
                     //    paramImagePath = string.Empty;
                     //}
 
+                    imageBox.Parent.BackColor = Color.DarkBlue;
+                    this.bCanBackgroundWorker = false;
                     backgroudWorker.RunWorkerAsync(paramImagePath);
                 }
             }

@@ -58,6 +58,7 @@ namespace ReadVisionApi
                     sheet.Cells[1, 1] = "Pay Price";
                     sheet.Cells[1, 2] = "EMPTY";
                     sheet.Cells[1, 3] = "Pay Description";
+                    sheet.Cells[1, 4] = "Org Date";
 
 
                     for (int row = 0; row < dgvGrid.Rows.Count; row++)
@@ -89,6 +90,7 @@ namespace ReadVisionApi
                         }
                         
                         sheet.Cells[(row + 2), 3] = $"{getDate} 서울사무소 {strAMPM} 식대";
+                        sheet.Cells[(row + 2), 4] = tmpDate;
                     }
 
                     try
