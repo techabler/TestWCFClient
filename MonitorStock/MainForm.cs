@@ -10,6 +10,7 @@ using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -27,7 +28,7 @@ namespace MonitorStock
         private void stockListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UCStockList uCStockList = new UCStockList();
-
+            pnlBody.Controls.Clear();
             pnlBody.Controls.Add(uCStockList);
 
             return;
@@ -52,6 +53,15 @@ namespace MonitorStock
         private void MainForm_Load(object sender, EventArgs e)
         {
             CGlobalVars.init();
+        }
+
+        private void bookmarkStockToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UCBookmarkList uCSbookmarkList = new UCBookmarkList();
+            pnlBody.Controls.Clear();
+            pnlBody.Controls.Add((uCSbookmarkList));
+
+            return;
         }
     }
 }

@@ -118,6 +118,22 @@ namespace MonitorStock.Service
             return table;
         }
 
+        private DataTable _sql_query(MySqlConnection conn, string query)
+        {
+            if(string.IsNullOrWhiteSpace(query)) return null;
+
+            DataTable table = new DataTable();
+            using(var cmd = conn.CreateCommand())
+            {
+                cmd.CommandText= query;
+                var reader = cmd.ExecuteReader();
+                table.Load(reader);
+                reader.Close();
+            }
+
+            return table;
+        }
+
         /// <summary>
         /// String 쿼리 반환 결과 카운팅 
         /// </summary>
@@ -174,6 +190,15 @@ namespace MonitorStock.Service
             }
 
             return _sql_select(conn, body);
+        }
+
+        public DataTable get_bookmarkTable(MySqlConnection conn)
+        {
+            string query = @"SELECT DATE, scode,  (SELECT name FROM stock_list A WHERE A.CODE = scode) AS sname, market, A.`type`, B.description FROM bookmark_list A
+                            INNER JOIN bookmark_type B ON A.`type`=B.code
+                            ORDER BY DATE ASC";
+
+            return _sql_query(conn, query);
         }
 
         /*

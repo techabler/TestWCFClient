@@ -98,6 +98,7 @@
             this.bookmarkStockToolStripMenuItem.Name = "bookmarkStockToolStripMenuItem";
             this.bookmarkStockToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
             this.bookmarkStockToolStripMenuItem.Text = "Bookmark Stock";
+            this.bookmarkStockToolStripMenuItem.Click += new System.EventHandler(this.bookmarkStockToolStripMenuItem_Click);
             // 
             // bookmarkGoldCrossToolStripMenuItem
             // 
