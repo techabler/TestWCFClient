@@ -18,6 +18,7 @@ namespace ReadVisionApi
     ///         https://s-engineer.tistory.com/349
     ///         https://yunwoong.tistory.com/148
     ///         https://github.com/googleapis/google-api-dotnet-client
+    ///         
     /// </summary>
     public partial class MainForm : Form
     {
