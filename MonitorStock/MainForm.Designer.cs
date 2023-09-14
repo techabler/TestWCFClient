@@ -56,20 +56,21 @@
             // 
             this.pnlBody.BackColor = System.Drawing.Color.DimGray;
             this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlBody.Location = new System.Drawing.Point(0, 24);
+            this.pnlBody.Location = new System.Drawing.Point(0, 30);
             this.pnlBody.Name = "pnlBody";
             this.pnlBody.Padding = new System.Windows.Forms.Padding(4);
-            this.pnlBody.Size = new System.Drawing.Size(1137, 615);
+            this.pnlBody.Size = new System.Drawing.Size(1137, 609);
             this.pnlBody.TabIndex = 1;
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.managementToolStripMenuItem,
             this.reportToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1137, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1137, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -82,45 +83,45 @@
             this.bookmarkTodayTop20ToolStripMenuItem,
             this.bookmarkUpStockToolStripMenuItem});
             this.managementToolStripMenuItem.Name = "managementToolStripMenuItem";
-            this.managementToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
+            this.managementToolStripMenuItem.Size = new System.Drawing.Size(114, 26);
             this.managementToolStripMenuItem.Text = "Management";
             // 
             // stockListToolStripMenuItem
             // 
             this.stockListToolStripMenuItem.Name = "stockListToolStripMenuItem";
-            this.stockListToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.stockListToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
             this.stockListToolStripMenuItem.Text = "Stock List";
             this.stockListToolStripMenuItem.Click += new System.EventHandler(this.stockListToolStripMenuItem_Click);
             // 
             // bookmarkStockToolStripMenuItem
             // 
             this.bookmarkStockToolStripMenuItem.Name = "bookmarkStockToolStripMenuItem";
-            this.bookmarkStockToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.bookmarkStockToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
             this.bookmarkStockToolStripMenuItem.Text = "Bookmark Stock";
             this.bookmarkStockToolStripMenuItem.Click += new System.EventHandler(this.bookmarkStockToolStripMenuItem_Click);
             // 
             // bookmarkGoldCrossToolStripMenuItem
             // 
             this.bookmarkGoldCrossToolStripMenuItem.Name = "bookmarkGoldCrossToolStripMenuItem";
-            this.bookmarkGoldCrossToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.bookmarkGoldCrossToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
             this.bookmarkGoldCrossToolStripMenuItem.Text = "Bookmark GoldCross";
             // 
             // bookmarkTodayTop20ToolStripMenuItem
             // 
             this.bookmarkTodayTop20ToolStripMenuItem.Name = "bookmarkTodayTop20ToolStripMenuItem";
-            this.bookmarkTodayTop20ToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.bookmarkTodayTop20ToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
             this.bookmarkTodayTop20ToolStripMenuItem.Text = "Bookmark Today Top20";
             // 
             // bookmarkUpStockToolStripMenuItem
             // 
             this.bookmarkUpStockToolStripMenuItem.Name = "bookmarkUpStockToolStripMenuItem";
-            this.bookmarkUpStockToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.bookmarkUpStockToolStripMenuItem.Size = new System.Drawing.Size(254, 26);
             this.bookmarkUpStockToolStripMenuItem.Text = "Bookmark Up Stock";
             // 
             // reportToolStripMenuItem
             // 
             this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
-            this.reportToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.reportToolStripMenuItem.Size = new System.Drawing.Size(68, 26);
             this.reportToolStripMenuItem.Text = "Report";
             // 
             // MainForm
