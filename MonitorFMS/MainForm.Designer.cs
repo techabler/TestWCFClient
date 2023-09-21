@@ -1,6 +1,6 @@
 ﻿namespace MonitorFMS
 {
-    partial class MainFrm
+    partial class MainForm
     {
         /// <summary>
         /// 필수 디자이너 변수입니다.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dgTray = new System.Windows.Forms.DataGridView();
@@ -36,6 +37,8 @@
             this.txtTrayId = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.MainStatusStrip = new System.Windows.Forms.StatusStrip();
+            this.tsStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.dgEqp = new System.Windows.Forms.DataGridView();
             this.Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,10 +64,12 @@
             this.sequenceEditorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mCSimulatorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.editorSimulatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SessionTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTray)).BeginInit();
             this.panel3.SuspendLayout();
+            this.MainStatusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgEqp)).BeginInit();
             this.panel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -79,7 +84,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(655, 450);
+            this.panel1.Size = new System.Drawing.Size(655, 523);
             this.panel1.TabIndex = 0;
             // 
             // panel4
@@ -90,7 +95,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(330, 57);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(325, 393);
+            this.panel4.Size = new System.Drawing.Size(325, 466);
             this.panel4.TabIndex = 5;
             // 
             // dgTray
@@ -105,7 +110,7 @@
             this.dgTray.Name = "dgTray";
             this.dgTray.RowHeadersVisible = false;
             this.dgTray.RowTemplate.Height = 23;
-            this.dgTray.Size = new System.Drawing.Size(307, 347);
+            this.dgTray.Size = new System.Drawing.Size(307, 408);
             this.dgTray.TabIndex = 4;
             // 
             // TColumn
@@ -138,14 +143,30 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.MainStatusStrip);
             this.panel3.Controls.Add(this.dgEqp);
             this.panel3.Controls.Add(this.txtEqpId);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 57);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(325, 393);
+            this.panel3.Size = new System.Drawing.Size(325, 466);
             this.panel3.TabIndex = 4;
+            // 
+            // MainStatusStrip
+            // 
+            this.MainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsStatus});
+            this.MainStatusStrip.Location = new System.Drawing.Point(0, 444);
+            this.MainStatusStrip.Name = "MainStatusStrip";
+            this.MainStatusStrip.Size = new System.Drawing.Size(325, 22);
+            this.MainStatusStrip.TabIndex = 4;
+            this.MainStatusStrip.Text = "statusStrip1";
+            // 
+            // tsStatus
+            // 
+            this.tsStatus.Name = "tsStatus";
+            this.tsStatus.Size = new System.Drawing.Size(0, 17);
             // 
             // dgEqp
             // 
@@ -159,7 +180,7 @@
             this.dgEqp.Name = "dgEqp";
             this.dgEqp.RowHeadersVisible = false;
             this.dgEqp.RowTemplate.Height = 23;
-            this.dgEqp.Size = new System.Drawing.Size(304, 347);
+            this.dgEqp.Size = new System.Drawing.Size(304, 408);
             this.dgEqp.TabIndex = 3;
             // 
             // Column
@@ -285,35 +306,35 @@
             // oPUIToolStripMenuItem
             // 
             this.oPUIToolStripMenuItem.Name = "oPUIToolStripMenuItem";
-            this.oPUIToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.oPUIToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.oPUIToolStripMenuItem.Text = "OP-UI";
             this.oPUIToolStripMenuItem.Click += new System.EventHandler(this.oPUIToolStripMenuItem_Click);
             // 
             // reworkUIToolStripMenuItem
             // 
             this.reworkUIToolStripMenuItem.Name = "reworkUIToolStripMenuItem";
-            this.reworkUIToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.reworkUIToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.reworkUIToolStripMenuItem.Text = "Rework-UI";
             this.reworkUIToolStripMenuItem.Click += new System.EventHandler(this.reworkUIToolStripMenuItem_Click);
             // 
             // sequenceEditorToolStripMenuItem
             // 
             this.sequenceEditorToolStripMenuItem.Name = "sequenceEditorToolStripMenuItem";
-            this.sequenceEditorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sequenceEditorToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.sequenceEditorToolStripMenuItem.Text = "Sequence Editor";
             this.sequenceEditorToolStripMenuItem.Click += new System.EventHandler(this.sequenceEditorToolStripMenuItem_Click);
             // 
             // mCSimulatorToolStripMenuItem
             // 
             this.mCSimulatorToolStripMenuItem.Name = "mCSimulatorToolStripMenuItem";
-            this.mCSimulatorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mCSimulatorToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.mCSimulatorToolStripMenuItem.Text = "MCSimulator";
             this.mCSimulatorToolStripMenuItem.Click += new System.EventHandler(this.mCSimulatorToolStripMenuItem_Click);
             // 
             // editorSimulatorToolStripMenuItem1
             // 
             this.editorSimulatorToolStripMenuItem1.Name = "editorSimulatorToolStripMenuItem1";
-            this.editorSimulatorToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.editorSimulatorToolStripMenuItem1.Size = new System.Drawing.Size(161, 22);
             this.editorSimulatorToolStripMenuItem1.Text = "CSV-Editor";
             this.editorSimulatorToolStripMenuItem1.Click += new System.EventHandler(this.editorSimulatorToolStripMenuItem1_Click_1);
             // 
@@ -332,46 +353,47 @@
             // oPUIToolStripMenuItem1
             // 
             this.oPUIToolStripMenuItem1.Name = "oPUIToolStripMenuItem1";
-            this.oPUIToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.oPUIToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
             this.oPUIToolStripMenuItem1.Text = "OP-UI";
             this.oPUIToolStripMenuItem1.Click += new System.EventHandler(this.oPUIToolStripMenuItem1_Click);
             // 
             // reworkUIToolStripMenuItem1
             // 
             this.reworkUIToolStripMenuItem1.Name = "reworkUIToolStripMenuItem1";
-            this.reworkUIToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.reworkUIToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
             this.reworkUIToolStripMenuItem1.Text = "Rework-UI";
             this.reworkUIToolStripMenuItem1.Click += new System.EventHandler(this.reworkUIToolStripMenuItem1_Click);
             // 
             // sequenceEditorToolStripMenuItem1
             // 
             this.sequenceEditorToolStripMenuItem1.Name = "sequenceEditorToolStripMenuItem1";
-            this.sequenceEditorToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.sequenceEditorToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
             this.sequenceEditorToolStripMenuItem1.Text = "Sequence-Editor";
             this.sequenceEditorToolStripMenuItem1.Click += new System.EventHandler(this.sequenceEditorToolStripMenuItem1_Click);
             // 
             // mCSimulatorToolStripMenuItem1
             // 
             this.mCSimulatorToolStripMenuItem1.Name = "mCSimulatorToolStripMenuItem1";
-            this.mCSimulatorToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.mCSimulatorToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
             this.mCSimulatorToolStripMenuItem1.Text = "MCSimulator";
             this.mCSimulatorToolStripMenuItem1.Click += new System.EventHandler(this.mCSimulatorToolStripMenuItem1_Click);
             // 
             // editorSimulatorToolStripMenuItem
             // 
             this.editorSimulatorToolStripMenuItem.Name = "editorSimulatorToolStripMenuItem";
-            this.editorSimulatorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editorSimulatorToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.editorSimulatorToolStripMenuItem.Text = "CSV-Editor";
             this.editorSimulatorToolStripMenuItem.Click += new System.EventHandler(this.editorSimulatorToolStripMenuItem_Click);
             // 
-            // MainFrm
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(655, 450);
+            this.ClientSize = new System.Drawing.Size(655, 523);
             this.Controls.Add(this.panel1);
-            this.Name = "MainFrm";
+            this.Name = "MainForm";
             this.Text = "Monitor FMS Rest";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainFrm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -380,6 +402,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgTray)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.MainStatusStrip.ResumeLayout(false);
+            this.MainStatusStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgEqp)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -424,6 +448,9 @@
         private System.Windows.Forms.ToolStripMenuItem mCSimulatorToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem editorSimulatorToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem editorSimulatorToolStripMenuItem;
+        private System.Windows.Forms.Timer SessionTimer;
+        private System.Windows.Forms.StatusStrip MainStatusStrip;
+        private System.Windows.Forms.ToolStripStatusLabel tsStatus;
     }
 }
 

@@ -9,10 +9,11 @@ using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using Serilog;
 
 namespace MonitorFMS
 {
-    public partial class MainFrm : Form
+    public partial class MainForm : Form
     {
         // 클래스 내부에 
         [DllImport("user32")]
@@ -36,13 +37,21 @@ namespace MonitorFMS
         #endregion
 
         private Timer _Timer;
-        public MainFrm()
+        public MainForm()
         {
             InitializeComponent();
+            StartSessionTimer();
         }
 
         private void MainFrm_Load(object sender, EventArgs e)
         {
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.Console()
+                .WriteTo.File("D:/GLog/MonitorFMS.log", rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+
+
             _RestUri = "http://localhost:48091";
             _APIKey = "MPwjAXk0KkGPNLOykR5ZGQ==";
 
@@ -61,6 +70,8 @@ namespace MonitorFMS
             processList.Add(new MyProcess() { enumName = "CSV_Editor", pName = "EditorSimulatorCSV", pPath = @"D:\07.Dev\99.FormationTool\CSVEditor\", pFullPath = @"D:\07.Dev\99.FormationTool\CSVEditor\EditorSimulatorCSV.exe", pType = "EXE" });
 
         }
+
+
 
         private void _Timer_Tick(object sender, EventArgs e)
         {
@@ -330,6 +341,7 @@ namespace MonitorFMS
         #region [Button Event]
         private void oPUIToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            StopSessionTimer();
             executeProcess(EM_Process.OP_UI, false);
         }
 
@@ -380,6 +392,11 @@ namespace MonitorFMS
         private void editorSimulatorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             executeProcess(EM_Process.CSV_Editor, true);
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            StopSessionTimer();
         }
     }
 

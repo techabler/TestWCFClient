@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogSpliterView", "LogSplite
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadVisionApi", "ReadVisionApi\ReadVisionApi.csproj", "{F485B053-9879-48C2-BED9-1DA0FCC62479}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DetectIdleTime", "DetectIdleTime\DetectIdleTime.csproj", "{E61D0274-63C6-4BAE-8EF5-D4DE15370CC0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{F485B053-9879-48C2-BED9-1DA0FCC62479}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F485B053-9879-48C2-BED9-1DA0FCC62479}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F485B053-9879-48C2-BED9-1DA0FCC62479}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E61D0274-63C6-4BAE-8EF5-D4DE15370CC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E61D0274-63C6-4BAE-8EF5-D4DE15370CC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E61D0274-63C6-4BAE-8EF5-D4DE15370CC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E61D0274-63C6-4BAE-8EF5-D4DE15370CC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,6 +100,7 @@ Global
 		{4EB90253-1306-4527-9726-F5642478E755} = {DE27ED28-A37F-46C0-9581-1873955F77CB}
 		{ED747F8E-4F20-4F8B-B054-0DFD410F6888} = {1FA73D89-A113-42AE-BA26-2338C20A056B}
 		{F485B053-9879-48C2-BED9-1DA0FCC62479} = {FF3907ED-DE99-4E73-ABA5-739294A8C273}
+		{E61D0274-63C6-4BAE-8EF5-D4DE15370CC0} = {FF3907ED-DE99-4E73-ABA5-739294A8C273}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9F8BB661-746D-478B-A574-B9F06092442F}
